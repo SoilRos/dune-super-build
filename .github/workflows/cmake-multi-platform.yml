@@ -63,6 +63,7 @@ jobs:
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
         -DCMAKE_CXX_STANDARD=20
+        -DDUNE_ENABLE_PYTHONBINDINGS=OFF
         -S ${{ github.workspace }}
 
     - name: Build

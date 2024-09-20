@@ -4,6 +4,8 @@ project(dune-core CXX)
 # allow dune to see imported targets across modules
 set(CMAKE_FIND_PACKAGE_TARGETS_GLOBAL ON)
 
+enable_testing()
+
 # include DUNE core modules in configuration order
 include(FetchContent)
 Set(FETCHCONTENT_QUIET FALSE)

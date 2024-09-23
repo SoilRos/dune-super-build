@@ -34,7 +34,7 @@ jobs:
             shell: powershell
           - os: windows-latest
             toolchain: gnu
-            shell: msys2 {0}
+            shell: 'msys2 {0}'
             c_compiler: gcc
             cpp_compiler: gcc
           - os: ubuntu-latest

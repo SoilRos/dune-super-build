@@ -26,25 +26,27 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         build_type: [Release]
         toolchain: [gnu, llvm, msvc]
-        shell: [bash]
         include:
           - os: windows-latest
             toolchain: msvc
             c_compiler: cl
             cpp_compiler: cl
+            shell: powershell
           - os: windows-latest
             toolchain: gnu
             shell: msys2 {0}
-            # c_compiler: gcc
-            # cpp_compiler: gcc
+            c_compiler: gcc
+            cpp_compiler: gcc
           - os: ubuntu-latest
             toolchain: gnu
             c_compiler: gcc
             cpp_compiler: g++
+            shell: bash
           - os: ubuntu-latest
             toolchain: llvm
             c_compiler: clang
             cpp_compiler: clang++
+            shell: bash
         exclude:
           - os: windows-latest
             toolchain: llvm
@@ -57,7 +59,7 @@ jobs:
 
     steps:
     - uses: msys2/setup-msys2@v2
-      if: "${{ matrix.os == 'windows-latest' }} && ${{ matrix.toolchain != 'msvc' }}"
+      if: ${{ matrix.os == 'windows-latest' }} && ${{ matrix.toolchain != 'msvc' }}
       with:
         msystem: UCRT64
         update: true

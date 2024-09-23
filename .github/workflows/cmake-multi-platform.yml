@@ -8,6 +8,12 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
+    inputs:
+      branch:
+        type: string
+        description: 'core modules tag e.g. (master | v2.9.0) [master]'
+        required: true
+        default: 'master'
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -88,7 +94,7 @@ jobs:
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
         -DCMAKE_CXX_STANDARD=20
-        -DBRANCH=feature/support-msvc
+        -DBRANCH=${{ github.event.inputs.branch }}
         -DDUNE_ENABLE_PYTHONBINDINGS=OFF
         -S .
 

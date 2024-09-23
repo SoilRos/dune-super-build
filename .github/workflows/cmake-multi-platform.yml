@@ -76,9 +76,13 @@ jobs:
         xcode-version: latest-stable
 
     - uses: actions/checkout@v4
+    - uses: ashutoshvarma/setup-ninja@v1.1
     - name: Setup Ninja
-      uses: ashutoshvarma/setup-ninja@v1.1
+      if: ${{ ! matrix.toolchain == 'mvsc' }}
+      run: |
+        echo "CMAKE_GENERATOR=Ninja" >> $GITHUB_ENV
 
+    - run: cmake --help
     - name: Configure CMake
       run: >
         cmake -G Ninja -B build

@@ -59,7 +59,7 @@ jobs:
 
     steps:
     - name: Setup msys2
-      if: ${{ matrix.os == 'windows-latest' }} && ${{ matrix.toolchain != 'msvc' }}
+      if: ${{ matrix.os == 'windows-latest' && matrix.toolchain == 'gnu' }}
       uses: msys2/setup-msys2@v2
       with:
         msystem: UCRT64

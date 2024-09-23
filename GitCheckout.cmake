@@ -5,5 +5,6 @@ if (BRANCH)
 
   execute_process(
     COMMAND ${GIT_EXECUTABLE} -C ${CMAKE_CURRENT_BINARY_DIR} checkout ${BRANCH}
-    COMMAND_ECHO STDOUT)
+    COMMAND_ECHO STDOUT
+    ERROR_VARIABLE err)
 endif()

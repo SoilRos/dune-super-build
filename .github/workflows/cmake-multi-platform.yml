@@ -81,11 +81,10 @@ jobs:
       if: ${{ ! matrix.toolchain == 'mvsc' }}
       run: |
         echo "CMAKE_GENERATOR=Ninja" >> $GITHUB_ENV
-
     - run: cmake --help
     - name: Configure CMake
       run: >
-        cmake -G Ninja -B build
+        cmake -B build
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}

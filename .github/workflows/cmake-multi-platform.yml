@@ -36,7 +36,12 @@ jobs:
             toolchain: gnu
             shell: 'msys2 {0}'
             c_compiler: gcc
-            cpp_compiler: gcc
+            cpp_compiler: c++
+          - os: windows-latest
+            toolchain: llvm
+            shell: 'msys2 {0}'
+            c_compiler: clang
+            cpp_compiler: clang++
           - os: ubuntu-latest
             toolchain: gnu
             c_compiler: gcc
@@ -53,8 +58,6 @@ jobs:
             cpp_compiler: clang++
             shell: bash
         exclude:
-          - os: windows-latest
-            toolchain: llvm
           - os: ubuntu-latest
             toolchain: msvc
           - os: macos-latest
@@ -68,12 +71,12 @@ jobs:
 
     steps:
     - name: Setup msys2
-      if: ${{ matrix.os == 'windows-latest' && matrix.toolchain == 'gnu' }}
+      if: ${{ matrix.os == 'windows-latest' && ( matrix.toolchain == 'gnu' || matrix.toolchain == 'llvm' ) }}
       uses: msys2/setup-msys2@v2
       with:
         msystem: UCRT64
         update: true
-        install: mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-cmake make git mingw-w64-ucrt-x86_64-git-lfs dos2unix
+        install: mingw-w64-ucrt-x86_64-${{ matrix.c_compiler }} mingw-w64-ucrt-x86_64-cmake make git mingw-w64-ucrt-x86_64-git-lfs dos2unix
 
     - name: Setup XCode
       if: ${{ matrix.os == 'macos-latest' }}

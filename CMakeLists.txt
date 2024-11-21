@@ -12,13 +12,13 @@ Set(FETCHCONTENT_QUIET FALSE)
 
 # List of modules with syntax https://<prefix>/<module>@<branch>
 set(modules
-    https://gitlab.dune-project.org/core/dune-common@bugfix/register-target-instead-of-include-directory
+    https://gitlab.dune-project.org/core/dune-common
     https://gitlab.dune-project.org/core/dune-istl
     https://gitlab.dune-project.org/core/dune-geometry
+    https://gitlab.dune-project.org/staging/dune-uggrid
     https://gitlab.dune-project.org/core/dune-grid
     https://gitlab.dune-project.org/core/dune-localfunctions
     https://gitlab.dune-project.org/staging/dune-typetree
-    https://gitlab.dune-project.org/staging/dune-uggrid
     https://gitlab.dune-project.org/staging/dune-functions
     https://gitlab.dune-project.org/pdelab/dune-pdelab
 )

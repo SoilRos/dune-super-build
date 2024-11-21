@@ -15,12 +15,12 @@ set(modules
     https://gitlab.dune-project.org/core/dune-common
     https://gitlab.dune-project.org/core/dune-istl
     https://gitlab.dune-project.org/core/dune-geometry
-    https://gitlab.dune-project.org/staging/dune-uggrid
+    https://gitlab.dune-project.org/staging/dune-uggrid@feautre/msvc-support
     https://gitlab.dune-project.org/core/dune-grid
     https://gitlab.dune-project.org/core/dune-localfunctions
     https://gitlab.dune-project.org/staging/dune-typetree
     https://gitlab.dune-project.org/staging/dune-functions
-    https://gitlab.dune-project.org/pdelab/dune-pdelab
+    # https://gitlab.dune-project.org/pdelab/dune-pdelab
 )
 
 foreach(module ${modules})

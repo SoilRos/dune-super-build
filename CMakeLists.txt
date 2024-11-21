@@ -19,7 +19,7 @@ set(modules
     https://gitlab.dune-project.org/core/dune-grid
     https://gitlab.dune-project.org/core/dune-localfunctions
     https://gitlab.dune-project.org/staging/dune-typetree
-    https://gitlab.dune-project.org/staging/dune-functions
+    # https://gitlab.dune-project.org/staging/dune-functions
     # https://gitlab.dune-project.org/pdelab/dune-pdelab
 )
 

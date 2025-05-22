@@ -30,33 +30,39 @@ jobs:
           - os: windows-latest
             toolchain: msvc
             c_compiler: cl
-            cpp_compiler: cl
+            cxx_compiler: cl
             shell: powershell
+            cxx_flags: '/Zc:preprocessor'
           - os: windows-latest
             toolchain: gnu
             shell: 'msys2 {0}'
             c_compiler: gcc
-            cpp_compiler: c++
+            cxx_compiler: c++
+            cxx_flags: ''
           - os: windows-latest
             toolchain: llvm
             shell: 'msys2 {0}'
             c_compiler: clang
-            cpp_compiler: clang++
+            cxx_compiler: clang++
+            cxx_flags: ''
           - os: ubuntu-latest
             toolchain: gnu
             c_compiler: gcc
-            cpp_compiler: g++
+            cxx_compiler: g++
             shell: bash
+            cxx_flags: ''
           - os: ubuntu-latest
             toolchain: llvm
             c_compiler: clang
-            cpp_compiler: clang++
+            cxx_compiler: clang++
             shell: bash
+            cxx_flags: ''
           - os: macos-latest
             toolchain: llvm
             c_compiler: clang
-            cpp_compiler: clang++
+            cxx_compiler: clang++
             shell: bash
+            cxx_flags: ''
         exclude:
           - os: ubuntu-latest
             toolchain: msvc
@@ -93,9 +99,10 @@ jobs:
     - name: Configure CMake
       run: >
         cmake -B build
-        -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
+        -DCMAKE_CXX_COMPILER=${{ matrix.cxx_compiler }}
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        -DCMAKE_CXX_FLAGS=${{ matrix.cxx_flags }}
         -DCMAKE_CXX_STANDARD=20
         -DBRANCH=${{ github.event.inputs.branch }}
         -DDUNE_ENABLE_PYTHONBINDINGS=OFF
